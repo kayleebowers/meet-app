@@ -32,7 +32,7 @@ The Meet App is a serverless, progressive web application (PWA) built with React
   * Scenario 1: Given the main page is open, when a user scrolls to the bottom of the page, then it will show a chart with the number of upcoming events in each city.
 
 ### Serverless Functions
-The Meet App can use serverless functions for scalability, data retrieval, event notifcations, and up-to-date responses and customization. Serverless functions can also support user authentication and enable the app to meet high or low user demands as needed. As such, users will have a smoother, more efficient experience while removing the need to support a complex server.
+The Meet App can use serverless functions for scalability, data retrieval, event notifications, and up-to-date responses and customization. Serverless functions can also support user authentication and enable the app to meet high or low user demands as needed. As such, users will have a smoother, more efficient experience while removing the need to support a complex server.
 
 ## Getting the Project Running
 
