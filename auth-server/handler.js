@@ -27,6 +27,17 @@ module.exports.getAuthURL = async () => {
     access_type: "offline",
     scope: SCOPES,
   });
+  return {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+    }, 
+    body: JSON.stringify({
+      authUrl
+    })
+  };
+};
 
 // create and export getAccessToken
 module.exports.getAccessToken = async (event) => {
@@ -58,15 +69,4 @@ module.exports.getAccessToken = async (event) => {
     }
   })
 }
-
-  return {
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-    }, 
-    body: JSON.stringify({
-      authUrl
-    })
-  };
-};
+  
