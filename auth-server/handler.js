@@ -28,6 +28,37 @@ module.exports.getAuthURL = async () => {
     scope: SCOPES,
   });
 
+// create and export getAccessToken
+module.exports.getAccessToken = async (event) => {
+  // decode auth code from URL above
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
+  
+  return new Promise((resolve, reject) => {
+    // exchange authorization code for access token
+    oAuth2Client.getToken(code, (error, response) => {
+      if (error) {
+        return reject(error);
+      } 
+      return resolve(response);
+    });
+  }).then((results) => {
+    // Respond with OAuth token 
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+      }, 
+      body: JSON.stringify(results)
+    }
+  }).catch((error) => {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error)
+    }
+  })
+}
+
   return {
     statusCode: 200,
     headers: {
