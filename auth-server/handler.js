@@ -70,3 +70,46 @@ module.exports.getAccessToken = async (event) => {
   })
 }
   
+//create and export getCalendarEvents
+module.exports.getCalendarEvents = async (event) => {
+  //get access token from uri
+  const access_token = decodeURIComponent(`${event.pathParameters.code}`);
+
+  //add token to client credentials
+  oAuth2Client.setCredentials({ access_token });
+
+  return new Promise((resolve, reject) => {
+    // get events from Google calendar using oAuth2Client for auth
+    calendar.events.list(
+      {
+        calendarId: CALENDAR_ID,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime"
+      }, 
+      (error, response) => {
+        if (error) {
+          return reject(error);
+        } else {
+          resolve(response);
+        }
+      }
+    );
+  }).then((results) => {
+    //response with CORS access and formatted events data
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+      }, 
+      body: JSON.stringify({ events: results.data.items })
+    }
+  }).catch((error) => {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error)
+    }
+  })
+}
