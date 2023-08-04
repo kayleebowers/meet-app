@@ -72,11 +72,17 @@ module.exports.getAccessToken = async (event) => {
   
 //create and export getCalendarEvents
 module.exports.getCalendarEvents = async (event) => {
+  oAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    redirect_uris[0]
+  );
+  
   //get access token from uri
-  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+  const accessTkn = decodeURIComponent(`${event.pathParameters.accessTkn}`);
 
   //add token to client credentials
-  oAuth2Client.setCredentials({ access_token });
+  oAuth2Client.setCredentials({ accessTkn });
 
   return new Promise((resolve, reject) => {
     // get events from Google calendar using oAuth2Client for auth

@@ -97,8 +97,8 @@
       const getCalendarEvents = "https://9qqgv6yrhk.execute-api.us-east-1.amazonaws.com/dev/api/get-events";
 
       getEvents.onclick = function () {
-        const { access_token } = JSON.parse(accessTokenElement.innerText);
-        const eventRequest = getCalendarEvents + "/" + access_token;
+        const { accessTkn } = JSON.parse(accessTokenElement.innerText);
+        const eventRequest = getCalendarEvents + "/" + accessTkn;
         fetch(eventRequest)
           .then(function (response) {
             return response.json();
