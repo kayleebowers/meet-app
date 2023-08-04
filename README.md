@@ -31,6 +31,9 @@ The Meet App is a serverless, progressive web application (PWA) built with React
 * As a user, I should be able to see charts visualizing event details so I know what kinds of events are available.
   * Scenario 1: Given the main page is open, when a user scrolls to the bottom of the page, then it will show a chart with the number of upcoming events in each city.
 
+### Serverless Functions
+The Meet App can use serverless functions for scalability, data retrieval, event notifcations, and up-to-date responses and customization. Serverless functions can also support user authentication and enable the app to meet high or low user demands as needed. As such, users will have a smoother, more efficient experience while removing the need to support a complex server.
+
 ## Getting the Project Running
 
 The application is hosted on [GitHub Pages](https://kayleebowers.github.io/meet-app/). The project can also be downloaded locally and started with `npm start`.
