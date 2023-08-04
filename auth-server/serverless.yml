@@ -31,14 +31,14 @@ provider:
     CLIENT_ID: ${file(config.json):CLIENT_ID}
     CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
     CALENDAR_ID: ${file(config.json):CALENDAR_ID}
-  # specify functions that will be used
-  functions: 
-    getAuthURL:
-      handler: handler.getAuthURL
-      events:
-        - http: 
-           path: api/get-auth-url
-           method: get
+# specify functions that will be used
+functions: 
+  getAuthURL:
+    handler: handler.getAuthURL
+    events:
+      - http: 
+          path: api/get-auth-url
+          method: get
 
 # you can overwrite defaults here
 #  stage: dev
