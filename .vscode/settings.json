@@ -6,6 +6,7 @@
         "listitem",
         "precaching",
         "predeploy",
+        "textbox",
         "webfonts"
     ]
 }
