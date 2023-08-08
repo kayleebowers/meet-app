@@ -2,7 +2,7 @@
 /* eslint-disable testing-library/render-result-naming-convention */
 import { render } from "@testing-library/react";
 import CitySearch from "../components/CitySearch";
-import { userEvent } from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 
 // describe new component scope
 describe("<CitySearch /> component", () => {
