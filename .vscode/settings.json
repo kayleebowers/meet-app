@@ -4,6 +4,7 @@
         "cacheable",
         "ebecekm",
         "precaching",
-        "predeploy"
+        "predeploy",
+        "webfonts"
     ]
 }
