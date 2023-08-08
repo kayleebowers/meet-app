@@ -13,7 +13,7 @@ describe("<CitySearch /> component", () => {
     CitySearchComponent = render(<CitySearch />);
   });
 
-  // test if input's existence and class
+  // test input's existence and class
   test("renders text input", () => {
     const cityTextBox = CitySearchComponent.queryByRole("textbox");
     expect(cityTextBox).toBeInTheDocument();
