@@ -24,7 +24,7 @@ describe("<CitySearch /> component", () => {
         const CitySearchComponent = render(<CitySearch />);
         // set user
         const user = userEvent.setup();
-        const cityTextBox = CitySearch.queryByRole("textbox");
+        const cityTextBox = CitySearchComponent.queryByRole("textbox");
         // await user interaction
         await user.click(cityTextBox);
         // define suggestionList once input is done
