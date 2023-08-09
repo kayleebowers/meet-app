@@ -26,5 +26,9 @@ describe("<Event /> component", () => {
 
     test("render Event location", () => {
         expect(eventComponent.getByText(testData.location)).toBeInTheDocument();
-    })
+    });
+
+    test("render Event button with title Show Details", () => {
+        expect(eventComponent.getByText("Show Details")).toBeInTheDocument();
+    });
 })
