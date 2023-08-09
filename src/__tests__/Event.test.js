@@ -47,4 +47,6 @@ describe("<Event /> component", () => {
         expect(eventDetails).toBeInTheDocument();
         expect(eventDetails).toHaveClass("event-details");
     });
+
+    test("hide details when user clicks on Hide Details button")
 })
