@@ -43,5 +43,8 @@ describe("<Event /> component", () => {
         const user = userEvent.setup();
         const detailsButton = eventComponent.getByText("Show Details");
         await user.click(detailsButton);
+        const eventDetails = eventComponent.getByText(testData.description);
+        expect(eventDetails).toBeInTheDocument();
+        expect(eventDetails).toHaveClass("event-details");
     });
 })
