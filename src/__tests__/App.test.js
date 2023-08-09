@@ -19,5 +19,9 @@ describe("< App /> component", () => {
         expect(AppDOM.querySelector("#city-search")).toBeInTheDocument();
     });
 
+    test("render number of events textbox", () => {
+        expect(AppDOM.querySelector("#event-number")).toBeInTheDocument();
+    })
+
 });
 
