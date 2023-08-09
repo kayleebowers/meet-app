@@ -27,6 +27,7 @@ describe("<NumberOfEvents /> component", () => {
     // update value on user change
     test("change textbox value when user types new number", async () => {
         const user = userEvent.setup();
-        
+        await user.type(numberTextbox, "{backspace}{backspace}10");
+        expect(numberTextbox).toHaveValue("10");
     })
 })
