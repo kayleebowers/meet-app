@@ -1,6 +1,6 @@
 const NumberOfEvents = () => {
     return (
-        <input id="event-number" type="text"></input>
+        <input id="event-number" type="text" value="32" ></input>
     )
 }
 
