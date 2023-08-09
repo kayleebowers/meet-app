@@ -48,5 +48,15 @@ describe("<Event /> component", () => {
         expect(eventDetails).toHaveClass("event-details");
     });
 
-    test("hide details when user clicks on Hide Details button")
+    test("hide details when user clicks on Hide Details button", async () => {
+        const user = userEvent.setup();
+        // show details 
+        const detailsButton = eventComponent.getByText("Show Details");
+        await user.click(detailsButton);
+        // hide details
+        const eventDetails = eventComponent.getByRole("event-details");
+        const closeButton = eventComponent.getByText("Hide Details");
+        await user.click(closeButton);
+        expect(eventDetails).not.toBeInTheDocument();
+    });
 })
