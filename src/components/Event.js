@@ -7,6 +7,7 @@ const Event = ({ event }) => {
         <p>{event.created}</p>
         <p>{event.location}</p>
         <button>Show Details</button>
+        {/* <p>{event.description}</p> */}
     </li>
   )
 };

@@ -6,6 +6,7 @@ import { render } from "@testing-library/react";
 import Event from "../components/Event";
 // import { getEvents } from "../api";
 import mockData from "../mock-data";
+import userEvent from "@testing-library/user-event";
 
 describe("<Event /> component", () => {
     let testData,
@@ -16,6 +17,7 @@ describe("<Event /> component", () => {
         eventComponent = render(<Event event={testData} />);
     })
 
+    // render all default elements
     test("render Event title", () => {
         expect(eventComponent.getByText(testData.summary)).toBeInTheDocument();
     });
@@ -30,5 +32,16 @@ describe("<Event /> component", () => {
 
     test("render Event button with title Show Details", () => {
         expect(eventComponent.getByText("Show Details")).toBeInTheDocument();
+    });
+
+    // display event details or not 
+    test("hide Show Details element by default", () => {
+        expect(eventComponent.queryByText(testData.description)).not.toBeInTheDocument();
+    });
+
+    test("show details when user clicks Show Details button", async () => {
+        const user = userEvent.setup();
+        const detailsButton = eventComponent.getByText("Show Details");
+        await user.click(detailsButton);
     });
 })
