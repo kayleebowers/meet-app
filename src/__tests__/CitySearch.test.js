@@ -91,13 +91,16 @@ describe("<CitySearch /> integration", () => {
     const AppComponent = render(<App />);
     const AppDOM = AppComponent.container.firstChild;
 
+    // get textbox from within #city-search div, await click
     const CitySearchDOM = AppDOM.querySelector("#city-search");
     const cityTextBox = within(CitySearchDOM).queryByRole("textbox");
     await user.click(cityTextBox);
 
+    //get events data and extract locations
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
 
+    //define suggestion items as content in li and test length  
     const suggestionListItems = within(CitySearchDOM).queryAllByRole("listitem");
     expect(suggestionListItems.length).toBe(allLocations.length + 1);
   });
