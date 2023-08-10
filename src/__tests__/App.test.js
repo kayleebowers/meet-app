@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/render-result-naming-convention */
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-node-access */
 import { render, within } from "@testing-library/react";
@@ -30,22 +31,28 @@ describe("< App /> component", () => {
 describe("<App /> integration", () => {
     test("renders a list of events matching the city selected by the user", async () => {
         const user = userEvent.setup();
+        // set mock App component and DOM
         const AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;
 
+        //select city search div and get input within
         const CitySearchDOM = AppDOM.querySelector("#city-search");
         const CitySearchInput = within(CitySearchDOM).queryByRole("textbox");
 
+        //simulate typing Berlin and clicking on its list item
         await user.type(CitySearchInput, "Berlin");
         const berlinSuggestionItem = within(CitySearchDOM).queryByText("Berlin, Germany");
         await user.click(berlinSuggestionItem);
 
+        //get remaining Event list items after user search 
         const EventListDOM = AppDOM.querySelector("#event-list");
         const allRenderedEventItems = within(EventListDOM).queryAllByRole("listitem");
 
+        //get all events with matching location
         const allEvents = await getEvents();
         const berlinEvents = allEvents.filter(event => event.location === "Berlin, Germany");
 
+        //number of rendered events should equal number all matching location events
         expect(allRenderedEventItems.length).toBe(berlinEvents.length);
     })
 })
