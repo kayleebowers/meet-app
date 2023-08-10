@@ -2,7 +2,7 @@
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-node-access */
 import { render, within } from "@testing-library/react";
-import { userEvent } from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 import { getEvents } from "../api";
 import App from "../App";
 
@@ -54,6 +54,11 @@ describe("<App /> integration", () => {
 
         //number of rendered events should equal number all matching location events
         expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+
+        //event text content should include location
+        allRenderedEventItems.forEach((event) => {
+            expect(event.textContent).toContain("Berlin, Germany");
+        });
     })
 })
 
