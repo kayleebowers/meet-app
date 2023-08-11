@@ -1,4 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+* {
+  background-color: #7C9D96;
+}
+
 .App {
   text-align: center;
   padding: 2% 5%;
@@ -6,6 +11,11 @@
 
 .App * {
   box-sizing: border-box;
+  background-color: #F4F2DE;
+}
+
+.app-header {
+  margin: 5%;
 }
 
 ul {
@@ -28,6 +38,7 @@ input[type="number"] {
   align-self: center;
   height: 38px;
   margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 .city {
@@ -72,7 +83,7 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid #bcdcdb;
   border-radius: 4px;
   position: relative;
 }
