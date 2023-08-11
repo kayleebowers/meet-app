@@ -1,18 +1,32 @@
+/* eslint-disable testing-library/no-node-access */
 import { loadFeature, defineFeature } from "jest-cucumber";
+import { render, waitFor, within } from "@testing-library/react";
+import App from "../App";
+import EventList from "../components/EventList";
+import { mockData } from "../mock-data";
+
 const feature = loadFeature("./src/features/filterEventsByCity.feature");
 
 defineFeature(feature, test => {
     test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
+        //empty because nothing happens or changes
         given('the user hasn’t searched for a city', () => {
-
         });
 
+        let AppComponent;
         when('the user opens the app', () => {
-
+            // simulate user opening app
+            AppComponent = render(<App />);
         });
 
-        then('they will see a list of upcoming events.', () => {
+        then('they will see a list of upcoming events.', async () => {
+            const AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector("#event-list");
 
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole("listitem");
+                expect(EventListItems.length).toBe(32);
+            })
         });
     });
 
