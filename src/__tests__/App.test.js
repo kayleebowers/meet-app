@@ -59,6 +59,30 @@ describe("<App /> integration", () => {
         allRenderedEventItems.forEach((event) => {
             expect(event.textContent).toContain("Berlin, Germany");
         });
+    });
+    
+    test("renders number of events selected by user", async () => {
+        const user = userEvent.setup();
+
+        const AppComponent = render(<App />);
+        const AppDOM = AppComponent.container.firstChild;
+
+        //select number input 
+        const NumberOfEventsInput = AppDOM.querySelector("#event-number");
+
+        // simulate user input
+        await user.type(NumberOfEventsInput, "{backspace}{backspace}10");
+
+        //get remaining Event list items after number input
+        const EventListDOM = AppDOM.querySelector("#event-list");
+        const allRenderedEventItems = within(EventListDOM).queryAllByRole("listitem");
+
+        //get event list of matching length
+        const allEvents = await getEvents();
+        const NumberedEvents = allEvents.slice(0, 10);
+
+        //number of rendered events should equal allEvents.length
+        expect(allRenderedEventItems.length).toBe(NumberedEvents.length);
     })
 })
 
