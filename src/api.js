@@ -48,7 +48,23 @@ const removeQuery = () => {
     }
 }
 
-//get access token
+// get new access token
+const getToken = async (code) => {
+    try {
+        const encodeCode = encodeURIComponent(code);
+        const response = await fetch(`https://9qqgv6yrhk.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const { access_token } = await response.json();
+        access_token && localStorage.setItem("access_token", access_token);
+        return access_token;
+    } catch (error) {
+        error.json();
+    }
+}
+
+//get stored access token or call new one
 export const getAccessToken = async () => {
 
     //check if token already exists and is valid
