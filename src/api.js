@@ -7,6 +7,13 @@ export const extractLocations = ((events) => {
     return locations;
 })
 
+// check validity of access token
+const checkToken = async (accessToken) => {
+    const response = await fetch(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`);
+    const result = await response.json();
+    return result;
+}
+
 // fetch list of mock events
 export const getEvents = async () => {
     return mockData;
@@ -15,7 +22,7 @@ export const getEvents = async () => {
 //get access token
 export const getAccessToken = async () => {
 
-    //check if token already exists in localStorage
+    //check if token already exists and is valid
     const accessToken = localStorage.getItem("access_token");
     const tokenCheck = accessToken && (await checkToken(accessToken));
 
