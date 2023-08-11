@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/prefer-screen-queries */
 /* eslint-disable testing-library/render-result-naming-convention */
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-node-access */
@@ -68,7 +69,8 @@ describe("<App /> integration", () => {
         const AppDOM = AppComponent.container.firstChild;
 
         //select number input 
-        const NumberOfEventsInput = AppDOM.querySelector("#event-number");
+        const NumberOfEventsDOM = AppDOM.querySelector("form");
+        const NumberOfEventsInput = within(NumberOfEventsDOM).queryByRole("textbox");
 
         // simulate user input
         await user.type(NumberOfEventsInput, "{backspace}{backspace}10");
@@ -79,7 +81,8 @@ describe("<App /> integration", () => {
 
         //get event list of matching length
         const allEvents = await getEvents();
-        const NumberedEvents = allEvents.slice(0, 10);
+        let NumberedEvents = [];
+        NumberedEvents.length = 10;
 
         //number of rendered events should equal allEvents.length
         expect(allRenderedEventItems.length).toBe(NumberedEvents.length);
