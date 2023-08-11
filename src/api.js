@@ -14,10 +14,27 @@ const checkToken = async (accessToken) => {
     return result;
 }
 
-// fetch list of mock events
+// fetch events
 export const getEvents = async () => {
-    return mockData;
-}
+    // use mock data in localhost
+    if (window.location.href.startsWith("http://localhost")) {
+        return mockData;
+    }
+
+    // check for access token
+    const token = await getAccessToken();
+
+    // fetch event data 
+    if (token) {
+        removeQuery();
+        const url = `https://9qqgv6yrhk.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
+        const response = await fetch(url);
+        const result = await response.json();
+        if (result) {
+            return result.events;
+        } else return null;
+    }
+};
 
 //get access token
 export const getAccessToken = async () => {
