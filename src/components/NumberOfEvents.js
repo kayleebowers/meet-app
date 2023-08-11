@@ -9,12 +9,13 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
     setCurrentNOE(value);
   };
 
-  console.log(isValue);
-
   return (
     <div id="event-number">
+      <label htmlFor="number-of-events-input">Number of Events: </label>
       <input
         type="text"
+        id="number-of-events-input"
+        className="number-of-events-input"
         value={isValue}
         onChange={handleChange}
       >
