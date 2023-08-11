@@ -9,15 +9,17 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
     setCurrentNOE(value);
   };
 
+  console.log(isValue);
+
   return (
-    <form id="event-number">
-      <label>Enter a number between 1 and 32</label>
+    <div id="event-number">
       <input
         type="text"
         value={isValue}
         onChange={handleChange}
-      ></input>
-    </form>
+      >
+      </input>
+    </div>
   );
 };
 
