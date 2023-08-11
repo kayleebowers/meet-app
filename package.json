@@ -32,7 +32,8 @@
     "test:coverage": "react-scripts test --coverage src",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "dev": "nodemon file.js"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "nodemon": "^3.0.1"
   }
 }
