@@ -69,7 +69,7 @@ describe("<App /> integration", () => {
         const AppDOM = AppComponent.container.firstChild;
 
         //select number input 
-        const NumberOfEventsDOM = AppDOM.querySelector("form");
+        const NumberOfEventsDOM = AppDOM.querySelector("#event-number");
         const NumberOfEventsInput = within(NumberOfEventsDOM).queryByRole("textbox");
 
         // simulate user input
@@ -78,14 +78,9 @@ describe("<App /> integration", () => {
         //get remaining Event list items after number input
         const EventListDOM = AppDOM.querySelector("#event-list");
         const allRenderedEventItems = within(EventListDOM).queryAllByRole("listitem");
-
-        //get event list of matching length
-        const allEvents = await getEvents();
-        let NumberedEvents = [];
-        NumberedEvents.length = 10;
-
+        
         //number of rendered events should equal allEvents.length
-        expect(allRenderedEventItems.length).toBe(NumberedEvents.length);
+        expect(allRenderedEventItems.length).toEqual(10);
     })
 })
 
