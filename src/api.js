@@ -36,6 +36,18 @@ export const getEvents = async () => {
     }
 };
 
+// simplify public URL 
+const removeQuery = () => {
+    let newurl;
+    if (window.history.pushState && window.location.pathname) {
+        newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.pushState("", "", newurl);
+    } else {
+        newurl = window.location.protocol + "//" + window.location.host;
+        window.history.pushState("", "", newurl);
+    }
+}
+
 //get access token
 export const getAccessToken = async () => {
 
