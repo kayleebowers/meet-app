@@ -1,5 +1,3 @@
-"use strict";
-
 //add required packages
 const { google } = require("googleapis");
 const calendar = google.calendar("v3");
