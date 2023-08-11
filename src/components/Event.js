@@ -6,7 +6,7 @@ const Event = ({ event }) => {
   return (
     <li className="event">
       <h2>{event.summary}</h2>
-      <p>{(event && new Date(event.created)).toUTCString()}</p>
+      <p>{event.created}</p>
       <p>{event.location}</p>
       <button className="details-btn" onClick={() => setShowDetails(!showDetails)}>Show Details</button>
       {showDetails ? (
