@@ -14,19 +14,20 @@ export const getEvents = async () => {
 
 //get access token
 export const getAccessToken = async () => {
-    //check if one exists in localStorage
-    const accessToken = localStorage.getItem("access_token");
 
+    //check if token already exists in localStorage
+    const accessToken = localStorage.getItem("access_token");
     const tokenCheck = accessToken && (await checkToken(accessToken));
 
+    // if no token, check for authorization code
     if (!accessToken || tokenCheck.error) {
         await localStorage.removeItem("access_token");
         const searchParams = new URLSearchParams(window.location.search);
         const code = await searchParams.get("code");
+
+        //if no auth code, redirect to Google screen for log in
         if (!code) {
-            const response = await fetch (
-                // "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT"
-            );
+            const response = await fetch ("https://9qqgv6yrhk.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url");
             const result = await response.json();
             const { authURL } = result;
             return (window.location.href = authUrl);
