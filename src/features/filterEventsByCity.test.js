@@ -54,8 +54,12 @@ defineFeature(feature, test => {
         });
     });
 
-    test('User can select a city from the suggested list.', ({ given, when, then }) => {
-        given('the user was typing for “Berlin” and saw a list of recommended cities', () => {
+    test('User can select a city from the suggested list.', ({ given, and, when, then }) => {
+        given('the user was typing for “Berlin”', () => {
+
+        });
+
+        and('saw a list of recommended cities', () => {
 
         });
 
@@ -63,7 +67,11 @@ defineFeature(feature, test => {
 
         });
 
-        then('their city will change to that city AND they will see a list of events in that city.', () => {
+        then('their city will change to that city', () => {
+
+        });
+        
+        and ('they will see a list of events in that city.', () => {
 
         });
     });
