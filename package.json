@@ -57,6 +57,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^5.0.0",
     "jest-cucumber": "^3.0.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "puppeteer": "^21.0.3"
   }
 }
