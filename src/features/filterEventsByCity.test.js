@@ -2,7 +2,6 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 import { render, waitFor, within } from "@testing-library/react";
 import App from "../App";
-import EventList from "../components/EventList";
 import { getEvents } from "../api";
 import userEvent from "@testing-library/user-event";
 
@@ -59,6 +58,7 @@ defineFeature(feature, test => {
         let AppDOM; 
         let CitySearchDOM;
         let citySearchInput;
+        // simulate user typing in search input
         given('the user was typing for “Berlin”', async () => {
             AppComponent = render(<App />);
             const user = userEvent.setup();
@@ -68,20 +68,32 @@ defineFeature(feature, test => {
             await user.type(citySearchInput, "Berlin");
         });
 
+        // simulate city search options being shown
+        let suggestionListItems;
         and('saw a list of recommended cities', () => {
-
+            suggestionListItems = within(CitySearchDOM).queryAllByRole("listitem");
+            expect(suggestionListItems).toHaveLength(2);
         });
 
-        when('the user selects a city (like Berlin) from the list', () => {
-
+        // simulate user clicking on city
+        when('the user selects a city (like Berlin) from the list', async () => {
+            const user = userEvent.setup();
+            await user.click(suggestionListItems[0]);
         });
 
+        // search input value should match selected city
         then('their city will change to that city', () => {
-
+            expect(citySearchInput.value).toBe("Berlin, Germany");
         });
         
-        and ('they will see a list of events in that city.', () => {
-
+        // number of rendered events should match Berlin events array length
+        and ('they will see a list of events in that city.', async () => {
+            const EventListDOM = AppDOM.querySelector("#event-list");
+            const EventListItems = within(EventListDOM).queryAllByRole("listitem");
+            // await async events call
+            const allEvents = await getEvents();
+            const berlinEvents = allEvents.filter(event => event.location === citySearchInput.value);
+            expect(EventListItems).toHaveLength(berlinEvents.length);
         });
     });
 });
