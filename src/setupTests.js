@@ -13,3 +13,6 @@ console.error = (...args) => {
     const ignoreMessage = MESSAGES_TO_IGNORE.find(message => args.toString().includes(message));
     if (ignoreMessage) originalError(...args);
 }
+
+// add time so test doesn't time out
+jest.setTimeout(60000); 

@@ -1,8 +1,5 @@
 import puppeteer from "puppeteer"
 
-// add time so test doesn't time out
-jest.setTimeout(60000); 
-
 describe("show/hide an event details", () => {
     test("An event element is collapsed by default", async () => {
         //launch browser
@@ -12,7 +9,7 @@ describe("show/hide an event details", () => {
         const page = await browser.newPage();
         await page.goto("http://localhost:3000/");
 
-        // select event element
+        // select event element once it appears
         await page.waitForSelector(".event");
 
         const eventDetails = await page.$(".event-details");
