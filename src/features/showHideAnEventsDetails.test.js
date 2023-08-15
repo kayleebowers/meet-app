@@ -1,7 +1,9 @@
+/* eslint-disable testing-library/prefer-screen-queries */
 /* eslint-disable testing-library/no-node-access */
 import { loadFeature, defineFeature } from "jest-cucumber";
 import { render, waitFor, within } from "@testing-library/react";
 import App from "../App";
+import userEvent from "@testing-library/user-event";
 
 const feature = loadFeature("./src/features/showHideAnEventsDetails.feature");
 
@@ -31,16 +33,28 @@ defineFeature(feature, test => {
     });
 
     test('User should see event details when they click a show more button.', ({ given, when, then }) => {
+        let AppComponent;
         given('the main page is open', () => {
-
+            AppComponent = render(<App />);
         });
 
-        when('a user clicks on an event', () => {
-
+        let eventListItems;
+        let seeDetailsButton;
+        when('a user clicks on an event', async () => {
+            const user = userEvent.setup();
+            const AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector("#event-list");
+            await waitFor(() => {
+                eventListItems = within(EventListDOM).queryAllByRole("listitem");
+                seeDetailsButton = eventListItems[0].querySelector(".details-btn");
+            })
+            await user.click(seeDetailsButton);
         });
 
         then('the event element will expand to reveal the details.', () => {
-
+            const eventDetails = eventListItems[0].querySelector(".event-details");
+            expect(eventDetails).toBeInTheDocument();
+            expect(eventDetails).toHaveClass("event-details");
         });
     });
 
