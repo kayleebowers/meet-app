@@ -4,7 +4,6 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 import App from "../App";
 import { render, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { getEvents } from "../api";
 import EventList from "../components/EventList";
 
 const feature = loadFeature("./src/features/specifyNumberOfEvents.feature");

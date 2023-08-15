@@ -10,7 +10,7 @@ const Event = ({ event }) => {
       <p>{event.location}</p>
       <button className="details-btn" onClick={() => setShowDetails(!showDetails)}>Show Details</button>
       {showDetails ? (
-        <div className="event-details" role="event-details">
+        <div className="event-details" data-testid="event-details">
             <p className="details">{event.description}</p>
             <button ariaHidden="true" className="hide-details-btn" onClick={() => setShowDetails(!showDetails)}>Hide Details</button>
         </div>

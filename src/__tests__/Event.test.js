@@ -43,7 +43,7 @@ describe("<Event /> component", () => {
         const user = userEvent.setup();
         const detailsButton = eventComponent.getByText("Show Details");
         await user.click(detailsButton);
-        const eventDetails = eventComponent.getByRole("event-details");
+        const eventDetails = eventComponent.getByTestId("event-details");
         expect(eventDetails).toBeInTheDocument();
         expect(eventDetails).toHaveClass("event-details");
     });
@@ -54,7 +54,7 @@ describe("<Event /> component", () => {
         const detailsButton = eventComponent.getByText("Show Details");
         await user.click(detailsButton);
         // hide details
-        const eventDetails = eventComponent.getByRole("event-details");
+        const eventDetails = eventComponent.getByTestId("event-details");
         const closeButton = eventComponent.getByText("Hide Details");
         await user.click(closeButton);
         expect(eventDetails).not.toBeInTheDocument();
