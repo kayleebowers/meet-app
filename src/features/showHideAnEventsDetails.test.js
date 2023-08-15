@@ -59,16 +59,33 @@ defineFeature(feature, test => {
     });
 
     test('User can hide the event details by clicking a close button.', ({ given, when, then }) => {
-        given('an event element is expanded', () => {
-
+        let AppComponent;
+        let seeDetailsButton;
+        let eventListItems;
+        // simulate clicking show details button
+        given('an event element is expanded', async () => {
+            AppComponent = render(<App />);
+            const user = userEvent.setup();
+            const AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector("#event-list");
+            await waitFor(() => {
+                eventListItems = within(EventListDOM).queryAllByRole("listitem");
+                seeDetailsButton = eventListItems[0].querySelector(".details-btn");
+            })
+            await user.click(seeDetailsButton);
         });
 
-        when('a user clicks on the close button', () => {
-
+        let eventDetails;
+        // simulate clicking hide details button
+        when('a user clicks on the close button', async () => {
+            const user = userEvent.setup();
+            eventDetails = eventListItems[0].querySelector(".event-details");
+            const closeButton = eventDetails.querySelector(".hide-details-btn");
+            await user.click(closeButton);
         });
 
         then('the event will collapse and hide details.', () => {
-
+            expect(eventDetails).not.toBeInTheDocument();
         });
     });
 })
