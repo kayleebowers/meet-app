@@ -39,3 +39,31 @@ describe("show/hide an event details", () => {
         expect(eventDetails).toBeNull();
     })
 })
+
+describe("filter events by city", () => {
+    let browser;
+    let page;
+
+    beforeAll(async () => {
+        browser = await puppeteer.launch();
+        page = await browser.newPage();
+        await page.goto("http://localhost:3000/");
+    });
+
+    afterAll(async () => {
+        browser.close();
+    });
+
+    test("display list of events when app opens", async () => {
+        const eventList = await page.$("#event-list");
+        expect(eventList).toBeDefined();
+    });
+
+    test("user should see recommended cities when they type in textbox", async () => {
+        
+    });
+
+    test("when user clicks on city they will see events in that city", async () => {
+        
+    })
+})
