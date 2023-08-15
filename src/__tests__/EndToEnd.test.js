@@ -60,7 +60,11 @@ describe("filter events by city", () => {
     });
 
     test("user should see recommended cities when they type in textbox", async () => {
-        
+        // simulate typing in textbox
+        await page.type(".city", "Berlin");
+
+        const suggestionList = await page.$(".suggestions");
+        expect(suggestionList).toHaveLength(3);
     });
 
     test("when user clicks on city they will see events in that city", async () => {
