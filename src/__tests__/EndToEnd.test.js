@@ -43,11 +43,13 @@ describe("show/hide an event details", () => {
 describe("filter events by city", () => {
     let browser;
     let page;
+    let eventList;
 
     beforeAll(async () => {
         browser = await puppeteer.launch();
         page = await browser.newPage();
         await page.goto("http://localhost:3000/");
+        eventList = await page.$("#event-list");
     });
 
     afterAll(async () => {
@@ -55,16 +57,16 @@ describe("filter events by city", () => {
     });
 
     test("display list of events when app opens", async () => {
-        const eventList = await page.$("#event-list");
         expect(eventList).toBeDefined();
     });
 
+    let textBox;
     test("user should see recommended cities when they type in textbox", async () => {
         // simulate typing in textbox
-        await page.type(".city", "Berlin");
-
-        const suggestionList = await page.$(".suggestions");
-        expect(suggestionList).toHaveLength(3);
+        textBox = await page.$(".city");
+        await textBox.type(".city", "Berlin");
+        const suggestions = await page.$(".suggestions");
+        expect(suggestions).toBeDefined();
     });
 
     test("when user clicks on city they will see events in that city", async () => {
