@@ -1,4 +1,3 @@
-import nProgress from "nprogress";
 import mockData from "./mock-data";
 
 //create new array with just event locations and remove duplicated with new Set
@@ -17,10 +16,8 @@ const checkToken = async (accessToken) => {
 
 // fetch events
 export const getEvents = async () => {
-    nProgress.start();
     // use mock data in localhost
     if (window.location.href.startsWith("http://localhost")) {
-        nProgress.done();
         return mockData;
     }
 
@@ -34,7 +31,6 @@ export const getEvents = async () => {
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
-            nProgress.done();
             return result.events;
         } else return null;
     }
