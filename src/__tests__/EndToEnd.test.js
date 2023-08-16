@@ -65,9 +65,12 @@ describe("filter events by city", () => {
     test("user should see recommended cities when they type in textbox", async () => {
         // simulate typing in textbox
         textBox = await page.$(".city");
-        await textBox.type(".city", "Berlin");
+        await textBox.type("Berlin");
         suggestions = await page.$(".suggestions");
-        expect(suggestions).toBeDefined();
+        expect(suggestions).toBeTruthy();
+        // clear textBox for next test
+        await textBox.click({clickCount: 3});
+        await textBox.press('Backspace');
     });
 
     test("when user clicks on city they will see events in that city", async () => {
