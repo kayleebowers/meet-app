@@ -11,11 +11,13 @@
 
 .App * {
   box-sizing: border-box;
-  background-color: #F4F2DE;
+  background-color: whitesmoke;
 }
 
 .app-header {
-  margin: 5%;
+  margin: 10 auto;
+  padding: 2%;
+  width: 100%;
 }
 
 ul {
@@ -25,6 +27,7 @@ ul {
 
 p {
   margin: 5px 0;
+  padding: 8px;
 }
 
 input[type="text"],
@@ -32,24 +35,29 @@ input[type="number"] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid #bcdcdb;
   font-size: 14px;
   line-height: 20px;
   align-self: center;
-  height: 38px;
-  margin-bottom: 20px;
   margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .city {
   width: 250px;
 }
 
-#city-search {
+#city-search, #event-number {
   display: flex;
   flex-direction: column;
   margin: auto;
   position: relative;
+  text-align: center;
+}
+
+label {
+  margin: 15px;
+  font-weight: bold;
 }
 
 .suggestions {
@@ -66,7 +74,7 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: #bcdcdb;
   cursor: default;
 }
 
@@ -79,21 +87,41 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+#event-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+  background-color: #7C9D96;
+}
+
 .event {
   padding: 10px 10px 35px;
-  margin-bottom: 10px;
   text-align: left;
   border: 1px solid #bcdcdb;
   border-radius: 4px;
   position: relative;
 }
 
-.details-btn {
+.details-btn, .hide-details-btn {
   position: absolute;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
-  outline: none;
+  border: 4px solid #bcdcdb;
   cursor: pointer;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.hide-details-btn {
+  z-index: 100;
+  padding: 5px 12px;
+}
+
+@media screen and (max-width: 700px) {
+  #event-list {
+    grid-template-columns: 1fr;
+  }
 }
