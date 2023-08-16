@@ -74,7 +74,12 @@ describe("filter events by city", () => {
     });
 
     test("when user clicks on city they will see events in that city", async () => {
-        await suggestions.evaluate(suggestion => suggestion.click());
-        expect(eventList).toHaveLength(33);
-    })
+        await textBox.type("Berlin");
+        suggestions = await page.$(".suggestions");
+        await page.click(".city-suggestion");
+        // get all list items
+        await page.waitForSelector("#event-list > li");
+        // check that li length matches number of mock data events for Berlin
+        expect((await page.$$("#event-list > li")).length).toBe(16);
+    });
 })
