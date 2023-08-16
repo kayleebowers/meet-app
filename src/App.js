@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="app-header">Meet App</h1>
+      <h1 className="app-header">Zero To Coding Hero</h1>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents setCurrentNOE={setCurrentNOE}/>
       <EventList events={events} />
