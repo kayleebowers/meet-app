@@ -11,15 +11,14 @@ class Alert extends Component {
     return {
       color: this.color,
       backgroundColor: this.bgColor,
-      borderWidth: "2px",
+      borderWidth: "1px",
       borderStyle: "solid",
-      fontWeight: "bolder",
-      borderRadius: "7px",
       borderColor: this.color,
       textAlign: "center",
-      fontSize: "12px",
+      fontSize: "14px",
       margin: "10px 0",
       padding: "10px",
+      fontWeight: "medium"
     };
   };
 
