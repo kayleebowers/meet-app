@@ -5,6 +5,7 @@ import CitySearch from "./components/CitySearch";
 import NumberOfEvents from "./components/NumberOfEvents";
 import { useState, useEffect } from "react";
 import { getEvents, extractLocations } from "./api";
+import { InfoAlert } from "./components/Alert";
 
 import "./App.css";
 
@@ -13,6 +14,7 @@ const App = () => {
   const [currentNOE, setCurrentNOE] = useState(32);
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
+  const [infoAlert, setInfoAlert] = useState("");
 
   // fetch event data and rerender on city or event number change
   useEffect(() => {
@@ -33,6 +35,10 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="app-header">Zero To Coding Hero</h1>
+      {/* render alert if there's a search error */}
+      <div className="alerts-container">
+        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+      </div>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents setCurrentNOE={setCurrentNOE}/>
       <EventList events={events} />
