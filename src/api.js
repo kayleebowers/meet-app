@@ -22,7 +22,7 @@ export const getEvents = async () => {
     }
 
     // get event data from local storage if user is offline
-    if (navigator.onLine) {
+    if (!navigator.onLine) {
         const events = localStorage.getItem("lastEvents");
         return events ? JSON.parse(events) : [];
     }
