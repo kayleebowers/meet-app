@@ -21,15 +21,24 @@ export const getEvents = async () => {
         return mockData;
     }
 
+    // get event data from local storage if user is offline
+    if (navigator.onLine) {
+        const events = localStorage.getItem("lastEvents");
+        return events ? JSON.parse(events) : [];
+    }
+
     // check for access token
     const token = await getAccessToken();
+    const url = `https://9qqgv6yrhk.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
 
     // fetch event data 
     if (token) {
         removeQuery();
-        const response = await fetch(`https://9qqgv6yrhk.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`);
+        const response = await fetch(url);
         const result = await response.json();
         if (result) {
+            // save fetched data to local storage
+            localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
         } else return null;
     }
