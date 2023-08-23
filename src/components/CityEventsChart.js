@@ -7,6 +7,7 @@ const CityEventsChart = ({events, allLocations}) => {
     // get data only when events change
     useEffect(() => {
         setData(getData());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [`${events}`]);
 
     // get number of events in each city
