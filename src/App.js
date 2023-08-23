@@ -35,7 +35,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="app-header">Zero To Coding Hero</h1>
+      <h1 className="app-header">Meet App</h1>
+      <h2 className="app-sub-header">Zero To Coding Hero</h2>
       {/* render alert if there's a search error */}
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}

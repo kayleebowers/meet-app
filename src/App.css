@@ -14,7 +14,7 @@
   background-color: whitesmoke;
 }
 
-.app-header {
+.app-header, .app-sub-header {
   margin: 10 auto;
   padding: 2%;
   width: 100%;
