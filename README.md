@@ -42,6 +42,7 @@ The application is hosted on [GitHub Pages](https://kayleebowers.github.io/meet-
 * Atatus
 * AWS Lambda
 * BDD
+* Gherkin
 * Google Calendar API
 * Jest
 * Jest-Cucumber
