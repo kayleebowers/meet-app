@@ -9,7 +9,7 @@ const EventGenresChart = ({ events }) => {
   useEffect(() => {
     setData(getData());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, JSON.stringify(events));
+  }, [`${events}`]);
 
   // calculate number of genre events from data
   const getData = () => {
