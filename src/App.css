@@ -14,10 +14,16 @@
   background-color: whitesmoke;
 }
 
-.app-header, .app-sub-header {
-  margin: 10 auto;
+.app-header {
+  margin: 3% auto;
   padding: 2%;
   width: 100%;
+}
+
+.app-header-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 ul {

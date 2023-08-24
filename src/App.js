@@ -45,8 +45,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="app-header">Meet App</h1>
-      <h2 className="app-sub-header">Zero To Coding Hero</h2>
+      <div className="app-header">
+        <div className="app-header-image">
+          <img src="../public/favicon.ico" alt="app logo"/>
+          <h1 >Meet App</h1>
+        </div>
+        <h2>Zero To Coding Hero</h2>
+      </div>
       {/* render alert if there's a search error */}
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
