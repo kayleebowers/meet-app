@@ -11,6 +11,7 @@ import { getEvents, extractLocations } from "./api";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
 
 import "./App.css";
+import icon from "./Meet-icon.png";
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -47,8 +48,8 @@ const App = () => {
     <div className="App">
       <div className="app-header">
         <div className="app-header-image">
-          <img src="../public/favicon.ico" alt="app logo"/>
-          <h1 >Meet App</h1>
+          <img src={icon} alt="app logo"/>
+          <h1 >App</h1>
         </div>
         <h2>Zero To Coding Hero</h2>
       </div>
