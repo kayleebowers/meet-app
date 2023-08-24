@@ -1,7 +1,7 @@
 # meet-app
 
 ## Project Description
-The Meet App is a serverless, progressive web application (PWA) built with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
+The Meet App is a serverless, progressive web application (PWA) built with React using test-driven development (TDD) and behavior-driven development (BDD) techniques. The application uses the Google Calendar API to fetch upcoming events.
 
 ### Key features
 * Filter Events by City
@@ -36,7 +36,36 @@ The Meet App can use serverless functions for scalability, data retrieval, event
 
 ## Getting the Project Running
 
-The application is hosted on [GitHub Pages](https://kayleebowers.github.io/meet-app/). The project can also be downloaded locally and started with `npm start`.
+The application is hosted on [GitHub Pages](https://kayleebowers.github.io/meet-app/). The project can also be downloaded locally and started with `npm run start`.
 
-## Dependencies
+## Technologies Used
+* Atatus
+* AWS Lambda
+* BDD
+* Google Calendar API
+* Jest
+* Jest-Cucumber
+* Lighthouse
+* OAuth2
+* Puppeteer
+* Recharts
 * React
+* React Testing Library
+* TDD
+
+## Screenshots
+
+### PWA Phone/Computer Logo
+[![Meet-120-120-px.png](https://i.postimg.cc/QtLtbJh8/Meet-120-120-px.png)](https://postimg.cc/f3KDWXVp)
+
+### Header
+[![Screen-Shot-2023-08-24-at-11-14-33-AM.png](https://i.postimg.cc/bYxGmWZK/Screen-Shot-2023-08-24-at-11-14-33-AM.png)](https://postimg.cc/HjLsxS42)
+
+### Data Visualization
+[![Screen-Shot-2023-08-24-at-11-15-52-AM.png](https://i.postimg.cc/YSF2hLgJ/Screen-Shot-2023-08-24-at-11-15-52-AM.png)](https://postimg.cc/gwYb7JgD)
+
+### Events List
+[![Screen-Shot-2023-08-24-at-11-16-28-AM.png](https://i.postimg.cc/X7vV9zdK/Screen-Shot-2023-08-24-at-11-16-28-AM.png)](https://postimg.cc/kDk3mwjD)
+
+### Event Details
+[![Screen-Shot-2023-08-24-at-11-17-06-AM.png](https://i.postimg.cc/mr7RbfW4/Screen-Shot-2023-08-24-at-11-17-06-AM.png)](https://postimg.cc/xkjBRZdp)
