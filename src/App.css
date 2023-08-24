@@ -112,6 +112,8 @@ label {
 .charts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 3%;
+  padding: 1% 0;
 }
 
 /* event list */
