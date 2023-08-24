@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { ResponsiveContainer, PieChart, Pie } from "recharts";
+import { ResponsiveContainer, PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([]);
   const genres = ["React", "JavaScript", "Node", "jQuery", "Angular"];
+  const colors = ["#7C9D96", "#9d7c83", "#967c9d", "#c6ba68", "#9d967c"];
 
   // get data only on event change
   useEffect(() => {
@@ -26,7 +27,14 @@ const EventGenresChart = ({ events }) => {
   };
 
   // render customized pie segment labels
-  const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    outerRadius,
+    percent,
+    index,
+  }) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius;
     const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07;
@@ -35,8 +43,8 @@ const EventGenresChart = ({ events }) => {
       <text
         x={x}
         y={y}
-        fill="#8884d8"
-        textAnchor={x > cx ? 'start' : 'end'}
+        fill="#black"
+        textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
       >
         {`${genres[index]} ${(percent * 100).toFixed(0)}%`}
@@ -50,11 +58,16 @@ const EventGenresChart = ({ events }) => {
         <Pie
           data={data}
           dataKey="value"
-          fill="#8884d8"
           labelLine={false}
           label={renderCustomizedLabel}
           outerRadius={130}
-        />
+        >
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={colors[index]} />
+        ))}
+        </Pie>
+        <Legend verticalAlign="bottom" height={36}/>
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{color: "black", backgroundColor: "#7C9D96", borderRadius: "10px", display: "flex", justifyContent: "center", border: "none", padding: "3px"}}/>
       </PieChart>
     </ResponsiveContainer>
   );
