@@ -66,7 +66,7 @@ const EventGenresChart = ({ events }) => {
           <Cell key={`cell-${index}`} fill={colors[index]} />
         ))}
         </Pie>
-        <Legend verticalAlign="bottom" height={36}/>
+        <Legend verticalAlign="bottom" height={36} iconType="plainline" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{color: "black", backgroundColor: "#7C9D96", borderRadius: "10px", display: "flex", justifyContent: "center", border: "none", padding: "3px"}}/>
       </PieChart>
     </ResponsiveContainer>
