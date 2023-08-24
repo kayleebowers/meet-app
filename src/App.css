@@ -55,6 +55,8 @@ input[type="number"] {
   text-align: center;
 }
 
+/* alerts */
+
 .alerts-container {
   left: 5%;
   z-index: 1000;
@@ -70,6 +72,8 @@ label {
   margin: 15px;
   font-weight: bold;
 }
+
+/* city suggestions */
 
 .suggestions {
   width: 250px;
@@ -98,6 +102,13 @@ label {
   background-color: #bcdcdb;
 }
 
+/* charts */
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* event list */
 #event-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -131,8 +142,8 @@ label {
   padding: 5px 12px;
 }
 
-@media screen and (max-width: 700px) {
-  #event-list {
+@media screen and (max-width: 768px) {
+  #event-list, .charts-container {
     grid-template-columns: 1fr;
   }
 }
