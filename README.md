@@ -34,9 +34,14 @@ The Meet App is a serverless, progressive web application (PWA) built with React
 ### Serverless Functions
 The Meet App can use serverless functions for scalability, data retrieval, event notifications, and up-to-date responses and customization. Serverless functions can also support user authentication and enable the app to meet high or low user demands as needed. As such, users will have a smoother, more efficient experience while removing the need to support a complex server.
 
+## Screen Recording 
+
+https://github.com/user-attachments/assets/594762f1-e1b1-4953-8acd-e02443c1c817
+
+
 ## Getting the Project Running
 
-The application is hosted on [GitHub Pages](https://kayleebowers.github.io/meet-app/). The project can also be downloaded locally and started with `npm run start`.
+The application was hosted on [GitHub Pages](https://kayleebowers.github.io/meet-app/), but the Lambdas are no longer running. View the screen recording or screenshots instead. The project can be downloaded locally and started with `npm run start`.
 
 ## Technologies Used
 * Atatus
